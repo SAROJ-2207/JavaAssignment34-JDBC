@@ -1,0 +1,49 @@
+create database employee_payroll_Database;
+use employee_payroll_Database;
+show databases;
+
+create table employee_payroll_Database(
+			    Id int unsigned NOT NULL AUTO_INCREMENT,
+                            Emp_Name varchar(200) NOT NULL,
+                            Phone_number varchar(200),
+                            Address varchar(200),
+                            Department varchar(200),
+                            Gender varchar(100),
+                            Basic_pay bigint(50),
+                            Deductions bigint(50),
+                            Taxable_pay bigint(50),
+                            Tax bigint(50),
+                            Net_pay bigint(50),
+                            Start DATE NOT NULL,
+                            PRIMARY KEY(Id)
+                            );
+
+insert into employee_payroll_Database values( null,'Alexa','9658741255','Hariyana','Sales','M',300000,200000,95000,15500,0,'2019-05-01');
+insert into employee_payroll_Database values( null,'Gitanjali','8096745125','Utterpradesh','Marketing','F',600000,300000,85700,37500,10500,'2020-07-10');
+insert into employee_payroll_Database values( null,'Soumya','6298325740','India','Sales','M',500000,100000,45000,41000,21000,'2021-04-01');
+insert into employee_payroll_Database values( null,'Abhinab','8475912568','Australia','Marketing','M',700000,250000,59000,190000,0,'2022-01-05');
+insert into employee_payroll_Database values( null,'Saroj Kumar sahoo','7606867840','Odisha','Marketing','M',300000,200000,97000,40000,80000,'2019-07-22');
+insert into employee_payroll_Database values( null,'Kartik','9853410210','Karnataka','Sales','M',900000,405000,78420,24900,27500,'2020-11-15');
+insert into employee_payroll_Database values( null,'Bandana','9853410210','Karnataka','Sales','F',750000,470000,76040,25700,17200,'2018-04-11');
+insert into employee_payroll_Database values( null,'Ananya','9853410210','Karnataka','Sales','F',680000,360000,76048,27300,43000,'2019-07-07');
+
+select * from employee_payroll_Database where start BETWEEN CAST('2020-11-15' AS DATE) AND DATE(NOW());
+ALTER table employee_payroll_Database  ADD Gender CHAR (1) AFTER Emp_Name;
+
+SELECT SUM(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'F' GROUP BY Gender;
+SELECT MIN(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'F' GROUP BY Gender;
+SELECT MAX(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'F' GROUP BY Gender;
+SELECT AVG(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'F' GROUP BY Gender;
+SELECT COUNT(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'F' GROUP BY Gender;
+
+SELECT SUM(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'M' GROUP BY Gender;
+SELECT MIN(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'M' GROUP BY Gender;
+SELECT MAX(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'M' GROUP BY Gender;
+SELECT AVG(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'M' GROUP BY Gender;
+
+SELECT COUNT(Basic_pay) FROM employee_payroll_Database WHERE Gender = 'M' GROUP BY Gender;
+
+ALTER table employee_payroll_Database DROP gender;
+Drop table employee_payroll_Database;
+delete from employee_payroll_Database where id = 1; 
+select * from employee_payroll_Database;
